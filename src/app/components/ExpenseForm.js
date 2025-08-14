@@ -25,13 +25,16 @@ export default function ExpenseForm() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("http://localhost:5000/expenses", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://expense-tracker-server-dusky-six.vercel.app/expenses",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to add expense");
