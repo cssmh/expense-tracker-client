@@ -11,9 +11,7 @@ export default function ExpenseList() {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await fetch(
-          "https://expense-tracker-server-dusky-six.vercel.app/expenses"
-        );
+        const response = await fetch("http://localhost:5000/expenses");
         if (!response.ok) {
           throw new Error("Failed to fetch expenses");
         }
@@ -31,12 +29,9 @@ export default function ExpenseList() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(
-        `https://expense-tracker-server-dusky-six.vercel.app/expenses/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`http://localhost:5000/expenses/${id}`, {
+        method: "DELETE",
+      });
 
       if (!response.ok) {
         throw new Error("Failed to delete expense");
